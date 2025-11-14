@@ -1,0 +1,21 @@
+[package]
+name = "btc-bruteforce-optimized"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+bitcoin = "0.32"            # adjust for compatibility with your toolchain
+bitcoin_hashes = "0.11"
+secp256k1 = { version = "0.28", features = ["rand-std"] }
+rand_chacha = "0.3"
+rand_core = "0.6"
+getrandom = "0.2"
+crossbeam-channel = "0.5"
+num_cpus = "1.16"
+core_affinity = "0.5"
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+target-cpu = "native"
